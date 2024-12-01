@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center my-auto">
+        <h3 class="display-3 text-light fw-medium mb-5">Entrance door</h3>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-4">
+                            <p class="mb-1">Username:</p>
+                            {{ form.username|add_class:"form-control" }}
+                            <div id="usr-help" class="form-text">Tip: it's your name and surname together, like: sherlockholmes</div>
+                            {% for error in form.username.errors %}
+                                <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group mb-4">
+                            <p class="mb-1">Super secret code:</p>
+                            {{ form.password|add_class:"form-control" }}
+                            {% for error in form.password.errors %}
+                                <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% if form.non_field_errors %}
+                            {% for err in form.non_field_errors %}
+                            <div class="alert alert-danger py-1" role="alert">
+                                {{ err }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                        <button type="submit" class="btn btn-secondary float-end">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

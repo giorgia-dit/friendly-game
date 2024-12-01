@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+<div class="container-fluid text-center my-auto">
+    <div class="row justify-content-center">
+
+        <div class="col-lg-3">
+            <p class="fs-4 special-text fw-medium text-light mb-3">Winner</h3>
+                <div class="card border border-3 border-warning text-start mx-2 mb-5" style="background-color: rgba(250, 250, 250, 0.7);">
+                    <div class="card-body">
+                        <a class="btn btn-warning disabled placeholder-glow col-1 p-5 mb-2"></a>
+                        <h3 class="card-title placeholder-glow">
+                            <span class="placeholder col-8"></span>
+                        </h3>
+                        <p class="card-text fw-medium">
+                            has found the golden ticket! ⭐️
+                        </p>
+                    </div>
+                </div>
+        </div>
+
+        <div class="col-lg-4 justify-content-center">
+            <p class="fs-4 special-text fw-medium text-light mb-3">Secret Prize</h3>
+            <div class="card border border-3 border-primary  mx-2 mb-5" style="background-color: rgba(250, 250, 250, 0.7);">
+                <div class="card-body">
+                    <h3 class="card-title placeholder-glow">
+                        <span class="placeholder col-6"></span>
+                    </h3>
+                    <p class="card-text placeholder-glow">
+                        <span class="placeholder col-7"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-6"></span>
+                        <span class="placeholder col-8"></span>
+                    </p>
+                    <a class="btn btn-dark opacity-25 disabled placeholder py-2" aria-disabled="true">
+                        Discover it!
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+</div>
+{% endblock %}
+  

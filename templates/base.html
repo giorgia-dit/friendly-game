@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Friendly Game{% endblock %}</title>
+    
+    <!-- Link to the compiled custom CSS -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <!-- Extra CSS -->
+    <link href="{% static 'css/particles.css' %}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="vh-100 d-flex flex-column">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand display-4" href="{% url 'home' %}">Wonka</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'friend_list' %}">Who's in?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'delivery_detail' pk=user.friend.delivery.pk %}">My delivery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'prize' %}">Secret prize</a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn nav-link text-primary opacity-50">Log out</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr class="border border-primary border-2 opacity-100 my-0">
+
+    <!-- Particles.js container -->
+    <div id="particles-js"></div>
+
+    <!-- Main Content -->
+    {% block content %}
+    <!-- Page-specific content will go here -->
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="text-light fw-light mt-auto border-top">
+        <p class="float-start fst-italic ms-3 my-1 py-1 "><small>
+            <a class="link-light link-opacity-75 link-underline-opacity-25 link-underline-opacity-75-hover" 
+                href="{% url 'nutritional' %}">
+                Nutritional information</a>
+        </small></p>
+        <p class="float-end me-3 my-1 py-1 ">&copy; 2024 <span class="special-text">gd</span></p>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Extra JS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{% static 'js/particles-config.js' %}"></script>
+    <script src="{% static 'js/extra-js.js' %}"></script>
+</body>
+</html>

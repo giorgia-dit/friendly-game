@@ -1,0 +1,86 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+// Custom variables
+
+// Colors
+
+$body-bg: #80CBC4;
+$body-color: #212121;
+
+$primary: #B71C1C;
+$secondary: #4DB6AC;
+$tertiary: #B2DFDB;
+$light: #FAFAFA;
+$dark: #212121;
+
+$light-transparent: rgba(255, 235, 238, 0.5);
+
+// Fonts
+
+$font-family-sans-serif: "DM Sans", sans-serif;
+$display-font-family: 'Edu AU VIC WA NT Pre', serif;
+
+// Borders
+
+$border-radius: 10px;
+
+// Cards
+
+$card-bg: $light;
+
+// Forms
+
+$input-bg: $light; 
+$input-border-color: $secondary;
+$input-focus-border-color: $primary;
+
+// Popovers
+
+$popover-bg: $light;
+$popover-max-width: 200px;
+$popover-header-bg: $primary;
+$popover-header-color: $light;
+$popover-body-color: $dark;
+
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Custom code
+
+.btn-display {
+    @include button-variant(
+      $light,
+      $primary,
+      $primary,
+      $primary,
+      $primary,
+      $light
+    );
+
+    border-radius: 20px;
+    border-width: 3px;
+  }
+
+.btn-delivery {
+  @include button-variant(
+    $light-transparent,
+    $secondary,
+    $dark,
+    $light,
+    $primary,
+    $dark
+  );
+
+  border-width: 4px;
+}
+
+.special-text {
+  font-family: $display-font-family;
+}

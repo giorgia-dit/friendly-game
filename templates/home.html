@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-5 col-lg-3">
+        <div class="card border-dark m-3" style="max-width: 250px; max-height: 130px;">
+            <div class="card-body p-3">
+                {% if user.is_authenticated %}
+                <div class="row">
+                    <div class="col-8">
+                        <h5 class="special-text card-title">{{ user.friend.first_name }}</h5>
+                        <p class="small fw-light card-text lh-1">{{ user.friend.city }}, {{ user.friend.country }}</p>
+                    </div>
+                    <div class="col-4">
+                        {% with 'img/svg/'|add:user.username|add:'.svg' as img_path %}
+                            <img src="{% static img_path %}" alt="Icon" class="img-fluid">
+                        {% endwith %}
+                    </div>     
+                </div>          
+                {% else %}
+                    <h5 class="special-text card-title">Stranger</h5>
+                    <p class="card-text">Please, log in to start!</p>
+                {% endif %}
+            </div>
+            {% if not user.is_authenticated %}
+                <div class="card-footer text-center pt-0 border-0 bg-light">
+                        <a type="button" href="{% url 'login' %}" class="btn btn-sm btn-secondary">Login</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="d-flex flex-column justify-content-center align-items-center my-auto">
+    <h1 class="display-1 fw-medium text-light text-center mb-1">Welcome to Wonka</h1>
+    <h4 class="fw-light text-light mb-5">the sweetiest Christmas game</h5>
+    {% if user.is_authenticated %}
+        <div>
+            <a class="btn btn-display p-3 me-1" href="{% url 'about' %}">What is Wonka?</a>
+            <a class="btn btn-display p-3 ms-1" href="{% url 'friend_list' %}">Who's in?</a>
+        </div>
+    {% endif %}
+
+    
+</div>
+{% endblock %}

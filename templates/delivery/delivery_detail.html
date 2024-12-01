@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h3 class="display-3 text-light fw-medium my-5 mx-auto">{{ delivery.friend.first_name }}'s delivery</h3>
+
+<div class="container-fluid text-center d-sm-none mt-1 mb-4">
+  <div class="row align-items-center">
+    <div class="col text-end me-1">
+      <span class="special-text text-dark fw-medium">Bologna</span>
+    </div>
+    <div class="col">
+      <div class="position-relative">
+        {% with 'img/svg/swirly2-white.svg' as img_path %}
+          <img src="{% static img_path %}" alt="Icon" class="img-fluid" style="height: 30px;">
+        {% endwith %}
+        <span class="position-absolute top-50 start-0 translate-middle p-2 bg-danger border border-2 border-light rounded-circle"></span>
+        <span class="position-absolute top-50 start-100 translate-middle p-2 bg-danger border border-2 border-light rounded-circle"></span>
+      </div>
+    </div>
+    <div class="col text-start ms-1">
+      <span class="special-text text-dark fw-medium">{{ delivery.friend.city }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid text-center d-none d-sm-block mt-1 mb-4">
+  <div class="row align-items-center">
+    <div class="col text-end me-1">
+      <span class="special-text text-dark fw-medium">Bologna</span>
+    </div>
+    <div class="col">
+      <div class="position-relative">
+        {% with 'img/svg/swirly4-white.svg' as img_path %}
+          <img src="{% static img_path %}" alt="Icon" class="img-fluid" style="height: 30px;">
+        {% endwith %}
+        <span class="position-absolute top-50 start-0 translate-middle p-2 bg-danger border border-2 border-light rounded-circle"></span>
+        <span class="position-absolute top-50 start-100 translate-middle p-2 bg-danger border border-2 border-light rounded-circle"></span>
+      </div>
+    </div>
+    <div class="col text-start ms-1">
+      <span class="special-text text-dark fw-medium">{{ delivery.friend.city }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid text-center">
+  <div class="row justify-content-center my-5">
+
+    {% for value, label in status_choices %}
+      <div class="col-auto mx-3 {% if value != delivery.status %}d-none d-md-block opacity-25{% endif %}">
+        {% with 'img/svg/'|add:value|add:'.svg' as img_path %}
+            <img src="{% static img_path %}" alt="Icon" class="img-fluid mb-2" style="height: 200px">
+        {% endwith %}
+        <div class="mt-4">
+          {% if value == delivery.status %}
+            <button type="button" class="btn btn-delivery position-relative"
+              data-bs-toggle="popover" data-bs-placement="bottom"
+              data-bs-title="{{ delivery.get_status_verbose.title }}" 
+              data-bs-content="{{ delivery.get_status_verbose.content }}">
+              {{ label }}
+                <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+            </button>
+          {% else %}
+            <button type="button" class="btn btn-delivery position-relative">
+              {{ label }}
+            </button>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}
