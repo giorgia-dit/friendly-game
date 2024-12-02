@@ -70,17 +70,22 @@ $popover-body-color: $dark;
 
 .btn-delivery {
   @include button-variant(
-    $light-transparent,
-    $secondary,
+    $light,
+    $primary,
     $dark,
     $light,
     $primary,
     $dark
   );
 
-  border-width: 4px;
+  border-width: 3px;
 }
 
 .special-text {
   font-family: $display-font-family;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }

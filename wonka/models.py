@@ -36,11 +36,11 @@ class Delivery(models.Model):
         description = {}
         if self.status == 'preparing':
             description['title'] = "It's almost ready!"
-            description['content'] = "It just takes veeery little time more..."
+            description['content'] = "It just takes a little more time..."
         elif self.status == 'shipped':
             description['title'] = "It's on the road!"
-            description['content'] = "Are you ready to unveil the mystery?"
+            description['content'] = "Ready to find out if you are the lucky winner?"
         else:
             description['title'] = "Destination!"
-            description['content'] = "I really hope you enjoyed it."
+            description['content'] = "I really hope you enjoyed it! 🍫"
         return description

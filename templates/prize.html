@@ -3,6 +3,7 @@
 
 {% block content%}
 <div class="container-fluid text-center my-auto">
+    <h5 class="display-5 text-light fw-medium mt-3 mb-5 mx-auto">Aren't you curious?</h5>
     <div class="row justify-content-center">
 
         <div class="col-lg-3">
@@ -34,9 +35,12 @@
                         <span class="placeholder col-6"></span>
                         <span class="placeholder col-8"></span>
                     </p>
-                    <a class="btn btn-dark opacity-25 disabled placeholder py-2" aria-disabled="true">
+                    <button type="button" class="btn btn-dark opacity-50 py-2"
+                        data-bs-toggle="popover" data-bs-placement="bottom"
+                        data-bs-title="Oops..." 
+                        data-bs-content="It's not time yet!">
                         Discover it!
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>

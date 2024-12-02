@@ -21,8 +21,8 @@ class FriendListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         if 'shuffle' in self.request.GET:  
-            return queryset.order_by('?') 
-        return queryset.order_by('first_name')
+            return queryset.exclude(pk=34).order_by('?') 
+        return queryset.exclude(pk=34).order_by('first_name')
 
 
 class DeliveryDetailView(LoginRequiredMixin, DetailView):
