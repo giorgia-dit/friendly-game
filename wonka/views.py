@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import TemplateView, DetailView, ListView, View
 from .models import Friend, Delivery
+from django.shortcuts import get_object_or_404, redirect
 
 
 class HomePageView(TemplateView):
@@ -40,6 +41,14 @@ class DeliveryDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['status_choices'] = Delivery._meta.get_field('status').choices
         return context
+    
+
+class DeliveryStatusUpdateView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        delivery = get_object_or_404(Delivery, pk=pk)
+        delivery.status = 'delivered'
+        delivery.save()
+        return redirect('delivery_detail', pk=delivery.pk) 
     
 
 class PrizePageView(LoginRequiredMixin, TemplateView):
