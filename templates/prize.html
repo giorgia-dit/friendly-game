@@ -10,9 +10,13 @@
             <p class="fs-4 special-text fw-medium text-light mb-3">Winner</h3>
                 <div class="card border border-3 border-warning text-start mx-2 mb-5" style="background-color: rgba(250, 250, 250, 0.7);">
                     <div class="card-body">
-                        <a class="btn btn-warning disabled placeholder-glow col-1 p-5 mb-2"></a>
-                        <h3 class="card-title placeholder-glow">
-                            <span class="placeholder col-8"></span>
+                        <div class="col-5">
+                            {% with 'img/svg/carlottabrondi.svg' as img_path %}
+                                <img src="{% static img_path %}" alt="Icon" class="img-fluid m-2" style="max-height: 100px">
+                            {% endwith %}
+                        </div>  
+                        <h3 class="card-title fs-4 mt-2">
+                            <span class="special-text">Carlotta</span>
                         </h3>
                         <p class="card-text fw-medium">
                             has found the golden ticket! ⭐️
@@ -25,22 +29,21 @@
             <p class="fs-4 special-text fw-medium text-light mb-3">Secret Prize</h3>
             <div class="card border border-3 border-primary  mx-2 mb-5" style="background-color: rgba(250, 250, 250, 0.7);">
                 <div class="card-body">
-                    <h3 class="card-title placeholder-glow">
-                        <span class="placeholder col-6"></span>
+                    <h3 class="card-title">
+                        <span class="col-6 fs-5">✨ Finally, the golden prize is unveiled! ✨</span>
                     </h3>
-                    <p class="card-text placeholder-glow">
-                        <span class="placeholder col-7"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-6"></span>
-                        <span class="placeholder col-8"></span>
+                    <p class="card-text">
+                        <div class="px-4">
+                            Just like the chocolate waterfalls in a chocolate factory, the prize is equally indulgent: 
+                            <span class="fw-bold">a gift card for <span class="fst-italic">QC Terme</span></span>, where cascading waters promise pure relaxation. 
+                        </div>
+                        <div class="px-4 mt-2">
+                            Thank you to all who joined this sweet adventure: your enthusiasm made it magical! 💛
+                        </div>
                     </p>
-                    <button type="button" class="btn btn-dark opacity-50 py-2"
-                        data-bs-toggle="popover" data-bs-placement="bottom"
-                        data-bs-title="Oops..." 
-                        data-bs-content="It's not time yet!">
-                        Discover it!
-                    </button>
+                    <a class="btn btn-warning py-2" href="https://www.qcterme.com/it">
+                        Discover more!
+                    </a>
                 </div>
             </div>
         </div>
